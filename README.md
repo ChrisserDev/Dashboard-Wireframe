@@ -42,15 +42,6 @@ Event listeners are used to handle user interactions. For example, the dropdown 
 
 The setInterval function is used to repeatedly execute the getCurrentTime function, ensuring that the displayed time is updated every second.
 
-### Context API (React):
-
-The use of the useContext hook and the creation of a CartContext suggest the use of React's Context API for managing global state related to the shopping cart. This allows components to access and update the cart state without prop drilling.
-
-### React Hooks (useState, useEffect):
-
-React hooks such as useState and useEffect are used to manage state and handle side effects, respectively. State is used for managing cart data, weather information, and other dynamic content.
-Conditional Rendering:
-
 ### Error Handling:
 The code includes error handling for API requests. If there is an error while fetching data from external APIs, the website provides a default background image and author information, ensuring a more robust user experience.
 
