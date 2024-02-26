@@ -1,5 +1,7 @@
 # Personal Dashboard (Chrome Extension)
 
+https://personaldashboardextension.netlify.app/
+
 ## Overview
 
 This code implements a simplified version of a Chrome extension inspired by the Momentum extension. It creates a dynamic new tab experience with background images fetched from Unsplash, a clock that updates in real-time, and displays weather information based on the user's geolocation. Additionally, users can select a cryptocurrency from a dropdown menu to view real-time market data, including the current price, 24-hour high, and 24-hour low.
