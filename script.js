@@ -1,6 +1,8 @@
+// Fetch a random nature photo from Unsplash API
 fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
     .then(res => res.json())
     .then(data => {
+        // Set the fetched image as the body's background
         document.body.style.backgroundImage = `url(${data.urls.regular})`;
 
         const authorOrLocation = document.getElementById("author");
@@ -10,18 +12,21 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
             const locationText = data.location.country ? `${data.location.city}, ${data.location.country}` : data.location.city;
             authorOrLocation.textContent = `Location: ${locationText}`;
         } else {
+            // If location is not available, display the author's name
             authorOrLocation.textContent = `By: ${data.user.name}`;
         }
     })
     .catch(err => {
-        // Use a default background image/author
+        // Use a default background image/author if there's an error.
         document.body.style.backgroundImage = `url(https://images.unsplash.com/photo-1560008511-11c63416e52d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMTEwMjl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjI4NDIxMTc&ixlib=rb-1.2.1&q=80&w=1080)`;
     });
 
+// Event listener for changes on the cryptocurrency select element
 document.getElementById("crypto-coins").addEventListener("change", function() {
    
     const selectedCoin = document.getElementById("crypto-coins").value;
 
+    // Fetch information about the selected cryptocurrency from CoinGecko API
     fetch(`https://api.coingecko.com/api/v3/coins/${selectedCoin}`)
         .then(res => {
             if (!res.ok) {
@@ -45,20 +50,23 @@ document.getElementById("crypto-coins").addEventListener("change", function() {
         .catch(err => console.error(err));
 });
 
-
+// Function to update the current time every second
 function getCurrentTime() {
     const date = new Date()
+    // Update the 'time' element with the current time, formatted in a short style
     document.getElementById("time").textContent = date.toLocaleTimeString("en-us", {timeStyle: "short"})
 };
 
 setInterval(getCurrentTime, 1000);
 
+// Get the user's current position
 navigator.geolocation.getCurrentPosition(position => {
 
+    // Extract latitude and longitude from the position object
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
 
-
+    // Fetch weather data for the current location from OpenWeatherMap API
     fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric`)
         .then(res => {
             if (!res.ok) {
